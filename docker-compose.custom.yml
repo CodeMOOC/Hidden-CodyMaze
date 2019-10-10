@@ -1,0 +1,16 @@
+# Config override for deployment
+version: '3'
+
+services:
+  web:
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Production
+    labels:
+    - "traefik.enable=true"
+    - "traefik.docker.network=web"
+    - "traefik.protocol=http"
+    - "traefik.port=8080"
+    - "traefik.frontend.rule=Host:maze.codemooc.org"
+    - "traefik.frontend.entryPoints=http,https"
+    restart: unless-stopped
+
