@@ -18,7 +18,7 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
 
 WORKDIR /app
-COPY --from=build /app/ApiServer/out ./
+COPY --from=build /app/Web/out ./
 
 # Run on localhost:8779
 ENV ASPNETCORE_URLS http://+:8080
