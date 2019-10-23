@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,158 +18,145 @@ namespace Web.Controllers {
             _logger = logger;
         }
 
+        protected IActionResult ShowCell(
+            CellColor color,
+            MusicalNote note,
+            [CallerMemberName] string caller = "") {
+
+            ViewData["Color"] = color.ToString().ToLower();
+            ViewData["Note"] = note;
+            ViewData["Code"] = caller;
+
+            return View("MusicalCell");
+        }
+
         [HttpGet("A1")]
         public IActionResult A1() {
-            ViewData["Code"] = "A1";
-            return View("Red");
+            return ShowCell(CellColor.Red, MusicalNote.Do);
         }
 
         [HttpGet("B1")]
         public IActionResult B1() {
-            ViewData["Code"] = "B1";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Sol);
         }
 
         [HttpGet("C1")]
         public IActionResult C1() {
-            ViewData["Code"] = "C1";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Do);
         }
 
         [HttpGet("D1")]
         public IActionResult D1() {
-            ViewData["Code"] = "D1";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Mi);
         }
 
         [HttpGet("E1")]
         public IActionResult E1() {
-            ViewData["Code"] = "E1";
-            return View("Red");
+            return ShowCell(CellColor.Red, MusicalNote.Do);
         }
 
 
         [HttpGet("A2")]
         public IActionResult A2() {
-            ViewData["Code"] = "A2";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Mi);
         }
 
         [HttpGet("B2")]
         public IActionResult B2() {
-            ViewData["Code"] = "B2";
-            return View("Yellow");
+            return ShowCell(CellColor.Yellow, MusicalNote.La);
         }
 
         [HttpGet("C2")]
         public IActionResult C2() {
-            ViewData["Code"] = "C2";
-            return View("Gray");
+            return ShowCell(CellColor.Yellow, MusicalNote.Sol);
         }
 
         [HttpGet("D2")]
         public IActionResult D2() {
-            ViewData["Code"] = "D2";
-            return View("Yellow");
+            return ShowCell(CellColor.Yellow, MusicalNote.Fa);
         }
 
         [HttpGet("E2")]
         public IActionResult E2() {
-            ViewData["Code"] = "E2";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Fa);
         }
 
 
         [HttpGet("A3")]
         public IActionResult A3() {
-            ViewData["Code"] = "A3";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Do);
         }
 
         [HttpGet("B3")]
         public IActionResult B3() {
-            ViewData["Code"] = "B3";
-            return View("Yellow");
+            return ShowCell(CellColor.Yellow, MusicalNote.Si);
         }
 
         [HttpGet("C3")]
         public IActionResult C3() {
-            ViewData["Code"] = "C3";
-            return View("Red");
+            return ShowCell(CellColor.Grey, MusicalNote.Do);
         }
 
         [HttpGet("D3")]
         public IActionResult D3() {
-            ViewData["Code"] = "D3";
-            return View("Yellow");
+            return ShowCell(CellColor.Yellow, MusicalNote.Mi);
         }
 
         [HttpGet("E3")]
         public IActionResult E3() {
-            ViewData["Code"] = "E3";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Do);
         }
 
 
         [HttpGet("A4")]
         public IActionResult A4() {
-            ViewData["Code"] = "A4";
-            return View("Red");
+            return ShowCell(CellColor.Red, MusicalNote.Sol);
         }
 
         [HttpGet("B4")]
         public IActionResult B4() {
-            ViewData["Code"] = "B4";
-            return View("Gray");
+            return ShowCell(CellColor.Red, MusicalNote.Re);
         }
 
         [HttpGet("C4")]
         public IActionResult C4() {
-            ViewData["Code"] = "C4";
-            return View("Red");
+            return ShowCell(CellColor.Yellow, MusicalNote.Do);
         }
 
         [HttpGet("D4")]
         public IActionResult D4() {
-            ViewData["Code"] = "D4";
-            return View("Gray");
+            return ShowCell(CellColor.Yellow, MusicalNote.Re);
         }
 
         [HttpGet("E4")]
         public IActionResult E4() {
-            ViewData["Code"] = "E4";
-            return View("Red");
+            return ShowCell(CellColor.Grey, MusicalNote.Sol);
         }
 
 
         [HttpGet("A5")]
         public IActionResult A5() {
-            ViewData["Code"] = "A5";
-            return View("Gray");
+            return ShowCell(CellColor.Grey, MusicalNote.Do);
         }
 
         [HttpGet("B5")]
         public IActionResult B5() {
-            ViewData["Code"] = "B5";
-            return View("Gray");
+            return ShowCell(CellColor.Red, MusicalNote.Mi);
         }
 
         [HttpGet("C5")]
         public IActionResult C5() {
-            ViewData["Code"] = "C5";
-            return View("Yellow");
+            return ShowCell(CellColor.Grey, MusicalNote.Fa);
         }
 
         [HttpGet("D5")]
         public IActionResult D5() {
-            ViewData["Code"] = "D5";
-            return View("Red");
+            return ShowCell(CellColor.Grey, MusicalNote.Fa);
         }
 
         [HttpGet("E5")]
         public IActionResult E5() {
-            ViewData["Code"] = "E5";
-            return View("Red");
+            return ShowCell(CellColor.Red, MusicalNote.Sol);
         }
 
     }
