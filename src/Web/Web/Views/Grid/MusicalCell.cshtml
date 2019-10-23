@@ -5,7 +5,9 @@
 </div>
 
 <audio
+    class="note-controls"
     autoplay
+    controls
     src="~/audio/@(ViewData["Note"].ToString().ToUpper())@(ViewData["NoteAudioSuffix"]).mp3">
 
     Your browser does not support the
