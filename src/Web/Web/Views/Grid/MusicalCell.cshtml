@@ -3,3 +3,10 @@
 <div class="note">
     @ViewData["Note"].ToString()
 </div>
+
+<audio
+    src="~/audio/@(ViewData["Note"].ToString().ToUpper())@(ViewData["NoteAudioSuffix"]).mp3">
+
+    Your browser does not support the
+    <code>audio</code> element.
+</audio>
