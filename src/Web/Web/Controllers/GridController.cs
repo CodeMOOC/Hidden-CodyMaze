@@ -32,6 +32,11 @@ namespace Web.Controllers {
             return View("MusicalCell");
         }
 
+        [HttpGet("")]
+        public IActionResult Index() {
+            return View();
+        }
+
         [HttpGet("A1")]
         public IActionResult A1() {
             return ShowCell(CellColor.Red, MusicalNote.Do, "1");
