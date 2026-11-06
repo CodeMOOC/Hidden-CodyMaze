@@ -1,1 +1,1 @@
-# Hidden-CodyMaze
+# Hidden CodyMaze deep links

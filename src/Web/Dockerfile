@@ -1,6 +1,6 @@
 # ---
 # First stage (build)
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /app
 
 # Copy solution as distinct layer
@@ -15,13 +15,13 @@ RUN dotnet publish -c Release -o out
 
 # ---
 # Second stage (execution)
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 
 WORKDIR /app
 COPY --from=build /app/Web/out ./
 
 # Run on localhost:8779
-ENV ASPNETCORE_URLS http://+:8080
+ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 
 # Drop privileges
