@@ -1,5 +1,3 @@
-version: '3'
-
 networks:
   web:
     external: true
@@ -7,7 +5,16 @@ networks:
 services:
   web:
     build: ./src/Web
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
     networks:
-    - web
+      - web
     expose:
       - "8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.web.rule=Host(`maze.codemooc.org`)"
+      - "traefik.http.routers.web.entrypoints=web,websecure"
+      - "traefik.http.services.web.loadbalancer.server.port=8080"
+    restart: unless-stopped

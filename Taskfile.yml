@@ -1,0 +1,53 @@
+version: '3'
+
+vars:
+  DC: docker compose -f docker-compose.yml
+  DC_RUN: '{{.DC}} run --rm'
+
+tasks:
+  cmd:
+    desc: Show the Docker Compose command
+    cmds:
+      - echo 'Docker-Compose command:'
+      - echo '{{.DC}}'
+
+  up:
+    desc: Build and start the web service
+    cmds:
+      - '{{.DC}} up -d web'
+      - '{{.DC}} ps'
+      - echo
+      - echo 'Service is now up'
+      - echo
+
+  ps:
+    desc: List containers
+    cmds:
+      - '{{.DC}} ps'
+
+  rs:
+    desc: Restart services
+    cmds:
+      - '{{.DC}} restart'
+
+  rebuild:
+    desc: Rebuild and recreate the web service
+    cmds:
+      - '{{.DC}} rm -sf web'
+      - '{{.DC}} build web'
+      - '{{.DC}} up -d web'
+
+  stop:
+    desc: Stop services
+    cmds:
+      - '{{.DC}} stop'
+
+  rm:
+    desc: Remove containers
+    cmds:
+      - '{{.DC}} rm -fs'
+
+  logs:
+    desc: Follow the web service logs
+    cmds:
+      - docker logs -f $({{.DC}} ps -q web)
